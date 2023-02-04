@@ -39,6 +39,11 @@
           v-else-if="product.custom_options && product.custom_options.length > 0"
           :product="product"
         />
+
+        <LikeButton
+        :product="product"
+        />
+
         <MProductAddToCart
           class="product__add-to-cart"
           :product="product"
@@ -68,6 +73,10 @@ import MProductOptionsCustom from 'theme/components/molecules/m-product-options-
 import MProductOptionsGroup from 'theme/components/molecules/m-product-options-group';
 import { ModalList } from 'theme/store/ui/modals';
 
+
+import LikeButton from 'src/modules/like-button/components/LikeButton.vue';
+//import FloorCalculator from 'src/modules/floor-calculator/components/FlooringComponent.vue';
+
 export default {
   components: {
     SfButton,
@@ -78,7 +87,9 @@ export default {
     MProductOptionsConfigurable,
     MProductOptionsBundle,
     MProductOptionsCustom,
-    MProductOptionsGroup
+    MProductOptionsGroup,
+    LikeButton,
+    //FloorCalculator
   },
   props: {
     product: {

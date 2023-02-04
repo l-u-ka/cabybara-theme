@@ -39,6 +39,7 @@
                       <span class="sf-property__value" v-html="property.value" />
                     </template>
                   </SfProperty>
+                  
                 </div>
               </template>
               <template #remove>
@@ -120,6 +121,7 @@ import { getThumbnailForProduct } from '@vue-storefront/core/modules/cart/helper
 import { getProductPrice, getProductPriceFromTotals } from 'theme/helpers';
 import VueOfflineMixin from 'vue-offline/mixin';
 import onEscapePress from '@vue-storefront/core/mixins/onEscapePress';
+
 
 import {
   SfButton,

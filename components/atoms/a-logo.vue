@@ -5,7 +5,7 @@
     class="a-logo"
   >
     <SfImage
-      src="/assets/logo.svg"
+      src="/assets/renoshopbee.svg"
       :alt="$t(defaultTitle)"
       class="sf-header__logo"
     />

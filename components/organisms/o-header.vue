@@ -5,11 +5,28 @@
       :visible="isHoveredMenu || isSearchPanelVisible"
       @click="$store.commit('ui/setSearchpanel', false)"
     />
+    <div class="top-header">
+      <div class="left">
+        <SfImage
+          src="../../assets/menu-contact.png"
+          alt="menu-contact"
+          class="sf-header__icons" 
+        />
+      </div>
+      <div class="right">
+        <SfImage
+          src="../../assets/icons.png"
+          alt="menu-icons"
+          class="sf-header__icons" 
+        />
+      </div>
+    </div>
     <SfHeader
       :active-icon="activeIcon"
       :class="{
         'sf-header--has-mobile-search': isSearchPanelVisible,
-        'sf-header--is-sticky': isSearchPanelVisible
+        'sf-header--is-sticky': isSearchPanelVisible,
+        'header': true
       }"
       :style="{'z-index': isHoveredMenu ? 2 : 1}"
     >
@@ -26,21 +43,24 @@
         >
           <router-link
             :class="{active: isCategoryActive(category)}"
-            :to="categoryLink(category)"
+            :to="category.link"
           >
             {{ category.name }}
           </router-link>
+          <!-- 
           <MMenu
             :visible="isHoveredMenu && !isSearchPanelVisible"
             :categories-ids="category.children_data"
             :title="category.name"
             @close="isHoveredMenu = false"
           />
+          -->
+          
         </SfHeaderNavigationItem>
       </template>
       <template #search>
         <div class="search-container">
-          <OSearch :class="{'desktop-only': !isSearchPanelVisible}" />
+          <OSearch v-if="isSearchPanelVisible" :class="{'desktop-only': !isSearchPanelVisible}" />
           <SfButton
             v-if="isSearchPanelVisible"
             class="sf-button--text form__action-button form__action-button--secondary mobile-only"
@@ -51,9 +71,18 @@
         </div>
       </template>
       <template #header-icons>
-        <div class="sf-header__icons">
-          <AAccountIcon class="sf-header__action" />
-          <AMicrocartIcon class="sf-header__action" />
+        <div class="sf-header__icons nav-icons">
+          <AMicrocartIcon />
+          <SfIcon
+            v-if="!isSearchPanelVisible"
+            icon="search"
+            size="xs"
+            
+            :style="{'cursor':'pointer'}"
+            :class="{'desktop-only': !isSearchPanelVisible}"
+            @click.native="$store.commit('ui/setSearchpanel', true)"
+          />
+          <AAccountIcon />
         </div>
       </template>
     </SfHeader>
@@ -67,7 +96,7 @@
 </template>
 
 <script>
-import { SfHeader, SfOverlay, SfButton } from '@storefront-ui/vue';
+import { SfHeader, SfOverlay, SfButton, SfImage, SfIcon } from '@storefront-ui/vue';
 import ALogo from 'theme/components/atoms/a-logo';
 import AAccountIcon from 'theme/components/atoms/a-account-icon';
 import AMicrocartIcon from 'theme/components/atoms/a-microcart-icon';
@@ -87,11 +116,21 @@ export default {
     AMicrocartIcon,
     OSearch,
     MMenu,
-    SfOverlay
-  },
+    SfOverlay,
+    SfImage,
+    SfIcon
+},
   data () {
     return {
-      isHoveredMenu: false
+      isHoveredMenu: false,
+      categories: [
+        { id: '1', name: 'HOME', link: '/' },
+        { id: '2', name: 'WOMEN', link: '/women' },
+        { id: '3', name: 'MEN', link: '/men' },
+        { id: '4', name: 'KIDS', link: '/kids' },
+        { id: '5', name: 'JEWELLERY', link: '/jewellery' },
+        { id: '6', name: 'ACCESORRIES', link: '/gear' }
+      ]
     }
   },
   computed: {
@@ -104,9 +143,10 @@ export default {
     activeIcon () {
       return this.isLoggedIn ? 'account' : '';
     },
+    /*
     categories () {
       return getTopLevelCategories(this.getCategories);
-    }
+    } */
   },
   methods: {
     categoryLink (category) {
@@ -132,6 +172,16 @@ export default {
 <style lang="scss" scoped>
 @import "~@storefront-ui/shared/styles/helpers/breakpoints";
 
+.top-header {
+  background-color: black;
+  height: 3rem;
+  display: flex;
+  padding: 0.5rem 3rem;
+  .left {
+    margin-right: auto;
+  }
+}
+
 .sf-header-navigation-item {
   &::after {
     bottom: 0;
@@ -151,6 +201,20 @@ export default {
   position: absolute;
   z-index: 1;
 }
+
+.header {
+  padding: 0rem 2rem;
+}
+
+.search-container {
+  margin-bottom: 7rem;
+  margin-right: 0.5rem;
+}
+
+.nav-icons {
+  gap: 0.5rem;
+}
+
 .o-header {
   --header-navigation-item-margin: 0 2rem 0 0;
   box-sizing: border-box;

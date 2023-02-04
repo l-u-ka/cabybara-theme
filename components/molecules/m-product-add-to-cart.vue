@@ -1,12 +1,18 @@
 <template>
   <div class="m-product-add-to-cart">
+    <!-- 
+    <FloorCalculator
+      :product="product"
+      @increase-by="(n) => qty = n "
+    />
+    -->
     <SfAlert
       v-if="alert"
       class="alert"
       :message="alert.message"
       :type="alert.type"
     />
-    <SfAddToCart v-model="qty">
+    <SfAddToCart v-model="qty" v-if="!product.is_flooring">
       <template #add-to-cart-btn>
         <AAddToCart
           class="sf-add-to-cart__button"
@@ -29,6 +35,10 @@
         <span v-else>&nbsp;</span>
       </template>
     </SfAddToCart>
+
+    <FloorCalculator v-else
+      :product="product"
+    ></FloorCalculator>
   </div>
 </template>
 <script>
@@ -36,13 +46,16 @@ import { onlineHelper } from '@vue-storefront/core/helpers';
 import { SfAddToCart, SfAlert } from '@storefront-ui/vue';
 import AProductQuantity from 'theme/components/atoms/a-product-quantity';
 import AAddToCart from 'theme/components/atoms/a-add-to-cart';
+import FloorCalculator from 'src/modules/floor-calculator/components/FlooringComponent.vue';
+
 export default {
   name: 'MProductAddToCart',
   components: {
     SfAddToCart,
     SfAlert,
     AProductQuantity,
-    AAddToCart
+    AAddToCart,
+    FloorCalculator
   },
   data () {
     return {
