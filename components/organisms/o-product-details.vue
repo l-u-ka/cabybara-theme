@@ -41,7 +41,7 @@
         />
 
         <LikeButton
-        :product="product"
+          :product="product"
         />
 
         <MProductAddToCart
@@ -73,9 +73,8 @@ import MProductOptionsCustom from 'theme/components/molecules/m-product-options-
 import MProductOptionsGroup from 'theme/components/molecules/m-product-options-group';
 import { ModalList } from 'theme/store/ui/modals';
 
-
 import LikeButton from 'src/modules/like-button/components/LikeButton.vue';
-//import FloorCalculator from 'src/modules/floor-calculator/components/FlooringComponent.vue';
+// import FloorCalculator from 'src/modules/floor-calculator/components/FlooringComponent.vue';
 
 export default {
   components: {
@@ -88,8 +87,8 @@ export default {
     MProductOptionsBundle,
     MProductOptionsCustom,
     MProductOptionsGroup,
-    LikeButton,
-    //FloorCalculator
+    LikeButton
+    // FloorCalculator
   },
   props: {
     product: {

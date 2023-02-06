@@ -1,6 +1,6 @@
 <template>
   <div class="m-product-add-to-cart">
-    <!-- 
+    <!--
     <FloorCalculator
       :product="product"
       @increase-by="(n) => qty = n "
@@ -37,8 +37,8 @@
     </SfAddToCart>
 
     <FloorCalculator v-else
-      :product="product"
-    ></FloorCalculator>
+                     :product="product"
+    />
   </div>
 </template>
 <script>

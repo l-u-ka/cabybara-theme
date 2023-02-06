@@ -10,14 +10,14 @@
         <SfImage
           src="../../assets/menu-contact.png"
           alt="menu-contact"
-          class="sf-header__icons" 
+          class="sf-header__icons"
         />
       </div>
       <div class="right">
         <SfImage
           src="../../assets/icons.png"
           alt="menu-icons"
-          class="sf-header__icons" 
+          class="sf-header__icons"
         />
       </div>
     </div>
@@ -47,7 +47,7 @@
           >
             {{ category.name }}
           </router-link>
-          <!-- 
+          <!--
           <MMenu
             :visible="isHoveredMenu && !isSearchPanelVisible"
             :categories-ids="category.children_data"
@@ -55,7 +55,6 @@
             @close="isHoveredMenu = false"
           />
           -->
-          
         </SfHeaderNavigationItem>
       </template>
       <template #search>
@@ -77,7 +76,7 @@
             v-if="!isSearchPanelVisible"
             icon="search"
             size="xs"
-            
+
             :style="{'cursor':'pointer'}"
             :class="{'desktop-only': !isSearchPanelVisible}"
             @click.native="$store.commit('ui/setSearchpanel', true)"
@@ -119,7 +118,7 @@ export default {
     SfOverlay,
     SfImage,
     SfIcon
-},
+  },
   data () {
     return {
       isHoveredMenu: false,
@@ -142,7 +141,7 @@ export default {
     ...mapGetters('user', ['isLoggedIn']),
     activeIcon () {
       return this.isLoggedIn ? 'account' : '';
-    },
+    }
     /*
     categories () {
       return getTopLevelCategories(this.getCategories);
@@ -159,7 +158,6 @@ export default {
   watch: {
     async isMobileMenu (status) {
       if (this.isMobileMenu) {
-        // we can't add this style to body because sfui also add/remove overflow to body and there may be conflict
         document.documentElement.style.overflow = 'hidden'
       } else {
         document.documentElement.style.overflow = ''

@@ -26,7 +26,7 @@ export default {
     price () {
       return getProductPrice(this.product, this.customOptions)
     },
-    pricePerM2() {
+    pricePerM2 () {
       return `$${Math.round(this.product.price / this.product.flooring_area)} (per m²)`
     }
   }

@@ -11,9 +11,9 @@ import { CmsModule } from '@vue-storefront/core/modules/cms'
 import { NewsletterModule } from '@vue-storefront/core/modules/newsletter'
 import { PaymentBackendMethodsModule } from 'src/modules/payment-backend-methods'
 import { PaymentCashOnDeliveryModule } from 'src/modules/payment-cash-on-delivery'
-import {LikeButton} from 'src/modules/like-button'
-import {FloorCalculator} from 'src/modules/floor-calculator'
-//import { ExampleModule } from 'src/modules/example-module'
+import { LikeButton } from 'src/modules/like-button'
+import { FloorCalculator } from 'src/modules/floor-calculator'
+// import { ExampleModule } from 'src/modules/example-module'
 
 import { registerModule } from '@vue-storefront/core/lib/modules'
 
@@ -31,7 +31,7 @@ export function registerClientModules () {
   registerModule(BreadcrumbsModule)
   registerModule(CmsModule)
   registerModule(NewsletterModule)
-  
+
   /* registerModule(ExampleModule, {
     apiKey: "YOUR_VALUABLE_API_KEY_ON_THE_FLY"
   }) // Here you pass config object as you want it

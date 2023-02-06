@@ -39,7 +39,6 @@
                       <span class="sf-property__value" v-html="property.value" />
                     </template>
                   </SfProperty>
-                  
                 </div>
               </template>
               <template #remove>
@@ -52,8 +51,9 @@
                 <SfButton
                   class="sf-button--text sf-collected-product__remove sf-collected-product__remove--text"
                   @click="removeHandler(product)"
-                >{{ $t('Remove') }}</SfButton
                 >
+                  {{ $t('Remove') }}
+                </SfButton>
               </template>
               <template #more-actions>
                 <span />
@@ -121,7 +121,6 @@ import { getThumbnailForProduct } from '@vue-storefront/core/modules/cart/helper
 import { getProductPrice, getProductPriceFromTotals } from 'theme/helpers';
 import VueOfflineMixin from 'vue-offline/mixin';
 import onEscapePress from '@vue-storefront/core/mixins/onEscapePress';
-
 
 import {
   SfButton,

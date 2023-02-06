@@ -1,9 +1,9 @@
-import { formatCategoryLink } from '@vue-storefront/core/modules/url/helpers';
+import { formatCategoryLink, formatProductLink } from '@vue-storefront/core/modules/url/helpers';
 import config from 'config'
 import { currentStoreView } from '@vue-storefront/core/lib/multistore'
 import { productThumbnailPath, getThumbnailPath, isServer } from '@vue-storefront/core/helpers'
 import { htmlDecode } from '@vue-storefront/core/filters'
-import { formatProductLink } from '@vue-storefront/core/modules/url/helpers'
+
 import { getProductPrice } from './price'
 
 export * from './price'
